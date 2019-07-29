@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+.container{
+    text-align: center;
+    margin-top: 360px;
+}
+.btn{
+    background: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: "montserrat";
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.8s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn1, .btn2{
+    border: 2px solid  rgb(43, 138, 52);
+    color: rgb(43, 138, 52);
+}
+.btn3, .btn4{
+    border: 2px solid  rgb(219, 135, 255);
+    color:rgb(253, 253, 253);
+}
+
+.btn1:hover, .btn2:hover{
+    color: rgb(248, 248, 248);
+}
+
+.btn3:hover, .btn4:hover{
+    color: rgb(219, 135, 255);
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: rgb(43, 138, 52);
+    z-index: -1;
+    transition: 0.8s;
+}
+
+.btn1::before, .btn3::before{
+    top:0;
+    border-radius: 0 0 47% 47%;
+}
+
+.btn2::before, .btn4::before{
+    bottom:0;
+    border-radius: 47% 47% 0 0;
+}
+
+.btn3::before, .btn4::before{
+    height: 180%;
+}
+
+.btn1:hover::before, .btn2:hover::before{
+    height: 180%;
+}
+
+.btn3:hover::before, .btn4:hover::before{
+    height: 0%;
+}
