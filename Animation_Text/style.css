@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image:url(./islandiia-domiki-priroda.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#main{
+    font-family: fantasy;
+    font-size: 60px;
+    display: inline-block;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#fix-text{
+    height: 85px;
+    display: inline-block;
+    overflow: hidden;
+    color: #F8F7F2;
+}
+
+#text1, #text2{
+    height: 85px;
+    display: inline-block;
+    overflow: hidden;
+    color: #DE5F4C;
+}
+
+#text1{
+    animation:anim1 10s infinite;
+    animation-delay: -5s;
+    max-width: 0;
+}
+#text2{
+    animation: anim2 10s infinite;
+    animation-delay: 5s;
+    max-width: 0;
+}
+
+@keyframes anim1{
+    0%{
+        max-width: 500px;
+    }
+    25%{
+        max-width: 0px;
+    }
+    75%{
+        max-width: 0px;
+    }
+    90%{
+        max-width: 500px;
+    }
+    100%{
+        max-width: 500px;
+    }
+}
+
+@keyframes anim2{
+    0%{
+        max-width: 0px;
+    }
+    25%{
+        max-width: 0px;
+    }
+    50%{
+        max-width: 500px;
+    }
+    75%{
+        max-width: 0px;
+    }
+
+    100%{
+        max-width: 0px;
+    }
+}
