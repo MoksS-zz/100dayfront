@@ -15,10 +15,10 @@ body {
 }
 
 nav {
-    background-color: cadetblue;
+    background-color: cadetblue; /* удалить */
 }
 
 .main {
-    background-color: coral;
+    background-color: coral; /* удалить */
 }
 
