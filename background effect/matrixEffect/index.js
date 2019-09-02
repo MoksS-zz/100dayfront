@@ -13,6 +13,8 @@ let columns = width/font_size;
 
 let drops = new Array (Math.ceil(columns)).fill(1);//создаем новые массив с указаной длинной и заполенный еденицой 
 
+const fps = 30;
+
 function draw () {
     ctx.fillStyle = "rgba(0, 0, 0, 0.045)";
     ctx.fillRect(0, 0, width,  height + 40);
@@ -29,9 +31,19 @@ function draw () {
 
         drops[i]++;
     }
-    
+    requestAnimationFrame(draw); //for 60fps
 };
-setInterval(draw, 25);
+
+draw(); //default 60 fps
+
+//For set FPS
+
+// (function animate (fps) {
+//     requestAnimationFrame(draw);
+//     setTimeout(animate, 1000 / fps, fps);
+// })(30);
+
+
 
 window.addEventListener("resize",() => {
     [width, height] = [canvas.offsetWidth, canvas.offsetHeight];
@@ -39,5 +51,5 @@ window.addEventListener("resize",() => {
     drops = new Array (Math.ceil(columns)).fill(1);
     canvas.width = width;
     canvas.height = height;
-})
+});
 
