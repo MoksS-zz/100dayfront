@@ -1,0 +1,54 @@
+/* * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+  
+html, body {
+    height: 100%;
+} */
+
+html,
+body {
+  margin: 0px;
+  overflow: hidden;
+  background: rgb(4, 4, 4);
+}
+
+p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 20px;
+  line-height: 20px;
+
+  color: rgba(100, 100, 100);
+  font-family: Helvetica;
+
+  text-shadow: 0px 0px 5px black;
+}
+
+a {
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+  color: rgb(220, 220, 220);
+}
+
+/* visited link */
+a:visited {
+  color: rgb(150, 150, 150);
+}
+
+/* mouse over link */
+a:hover {
+  color: white;
+}
+
+/* selected link */
+a:active {
+  color: white;
+}
