@@ -18,21 +18,6 @@ function setup() {
   points.push(new ExpandingPoint(0, 0, 0, 0, 0));
   points[0].expand();
 
-  // datGUI setup
-  let gui = new dat.GUI();
-
-  gui
-    .add(props, "n", 50, 500)
-    .step(1)
-    .name("Number of points");
-
-  gui.add(props, "scale", 10, 100).name("Point seperation");
-
-  gui.add(props, "explodetime", 25, 500).name("Max explode time");
-
-  gui.add(props, "speedx", 0, 0.2).name("x speed");
-
-  gui.add(props, "speedy", 0, 0.2).name("y speed");
 }
 
 function draw() {
