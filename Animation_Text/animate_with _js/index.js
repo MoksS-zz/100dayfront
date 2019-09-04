@@ -12,10 +12,8 @@ function textAnimate(words,id, colors = ['#fff']) {
             target.textContent = words[0].substring(0,letterCount);
 
             setTimeout(() => {
-                let usedColor = colors.shift();
-                colors.push(usedColor); 
-                var usedWord = words.shift();
-                words.push(usedWord);
+                colors.push(colors.shift());//прогоняем цвета по кругу 🔄
+                words.push(words.shift());//🔄
                 x = 1;
                 target.setAttribute("style", "color:" + colors[0]);
                 letterCount += x;
@@ -35,5 +33,5 @@ function textAnimate(words,id, colors = ['#fff']) {
     },120);
 };
 
-textAnimate(["Привет Мир. Lorem lOeasdasdafgdsgjkdsghaskjdhakjwheqwhrbqkfb", "We Are The  Champions!", "Make love, not war!" ], "text", ["tomato", "rebeccapurple", "lightblue"]);
+textAnimate(["Hi, My name Maksim", "We Are The  Champions!", "Make love, not war!" ], "text", ["tomato", "rebeccapurple", "lightblue"]);
 
