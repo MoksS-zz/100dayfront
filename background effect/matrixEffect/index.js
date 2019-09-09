@@ -19,7 +19,7 @@ function draw () {
     ctx.fillStyle = "rgba(0, 0, 0, 0.045)";
     ctx.fillRect(0, 0, width,  height + 40);
 
-    ctx.fillStyle = "#f4427d";
+    ctx.fillStyle = "#f4427d";//red  "rgb(39, 215, 39)"-green
     ctx.font = font_size + "px arial";
 
     for(let i = 0; i < drops.length; i++) {
