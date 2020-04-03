@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Canvas</title>
+  <meta charset='utf-8' />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: #76b852;
+      background: -webkit-linear-gradient(to right, #76b852, #8dc26f);
+      background: linear-gradient(to right, #76b852, #8dc26f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id='test'>Текст показывается, если элемент не поддерживается</canvas>
+  <script type="text/javascript">
+
+    const canvas = document.getElementById("test");
+    const ctx = canvas.getContext("2d");
+    let angle = randomNumber();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+    console.log(ctx);
+
+    function randomNumber() {
+      return (Math.random() * (35 - 45) + 45);
+    }
+    let L = 1;
+    function render(x0, y0, x1, y1) {
+      const l = Math.round( Math.sqrt( Math.pow((x0 - x1 ), 2) + Math.pow((y0-y1), 2) ));
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.stroke();
+      if (l > 5) {
+        ctx.rotate(angle);
+
+        render(x1, y1, (x1 + 75) * 0.3, (y1 + 35)  * 0.3);
+      }
+    }
+
+    render(150, 75, 150, 40);
+  </script>
+</body>
+
+</html>

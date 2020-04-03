@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Canvas</title>
+        <meta charset='utf-8' />
+    </head>
+    <body>
+        <canvas id='test' height='1200' width='1200'>Текст показывается, если элемент не поддерживается</canvas>
+        <script type="text/javascript">
+            var canvas  = document.getElementById("test");
+            var ctx     = canvas.getContext('2d');
+
+            // ищет координаты концов перпендикулярного отрезка, походящего через точку B, длиной 2*l
+            function ortho(Ax, Ay, Bx, By, l){
+                var L = Math.round( Math.sqrt(Math.pow((Ax - Bx ), 2) + Math.pow((Ay - By), 2) ));
+
+                Cx = Bx - (By - Ay) * l / L; 
+                Cy = By + (Bx - Ax) * l / L;
+                Dx = Bx + (By - Ay) * l / L;
+                Dy = By - (Bx - Ax) * l / L;
+
+                return [ Cx, Cy, Dx, Dy ];
+            }
+
+			function segments(x0, y0, x1, y1) {
+                var L = Math.round( Math.sqrt( Math.pow((x0 - x1 ), 2) + Math.pow((y0-y1), 2) ));
+                ctx.beginPath();
+                ctx.moveTo(x0, y0);
+                ctx.lineTo(x1, y1);
+                ctx.stroke(); 
+                // условие остановки можно менять
+                if ( L < 5 ){
+                    return;
+                }
+                //коэффициент 0.3 можно менять
+                var s1 = ortho(x0, y0, x1, y1, L * 0.3);
+                var s2 = ortho(x1, y1, x0, y0, L * 0.3);
+                // тут можно добавить случайности
+                //var s1 = ortho(x0, y0, x1, y1, L * (0.2 + 0.25 * Math.random()));
+                //var s2 = ortho(x1, y1, x0, y0, L * (0.2 + 0.25 * Math.random()));
+                segments.apply(null, s1);
+                segments.apply(null, s2);
+            }
+
+            ctx.strokeStyle = 'green';
+            ctx.lineWidth = 2;
+            // координаты исходного отрезка можно менять 
+            segments( 300, 600, 900, 600 );
+        </script>
+    </body>
+</html>
