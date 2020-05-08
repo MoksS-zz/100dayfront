@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <title>Test streams</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="initVideo.js"></script>
+</head>
+
+<body>
+    <script>
+        for (let i = 1; i < 5; i++) {
+            document.body.innerHTML += `    
+            <div class="player">
+                <div class="player__wrapper">
+                    <video class="player__video viewer" id="video-${i}" autoplay muted loop></video>
+
+                    <div class="player__controls">
+                        <div class="progress">
+                            <div class="progress__filled"></div>
+                        </div>
+                        <button class="player__button toggle" title="Toggle Play">►</button>
+                        <button class="player__button muted" title="Toggle Sound"></button>
+                        <span class="soundLevel">▁ ▂ ▃ ▅ ▆ █</span> 
+                        <button class="player__button Icon Icon_brigthess"></button>
+                        <input type="range" class="brigthess" min="0" max="2" step="0.01" value="1">
+                        <button class="player__button Icon Icon_contrast"></button>
+                        <input type="range" class="contrast" min="0" max="2" step="0.01" value="1">
+                        <button class="player__button screen" title="All Camers">Все камеры</button>
+                    </div>
+                </div>
+            </div>`
+        }
+        // для того чтобы вы могли с телефона смотерть если зайдете через локальный ip
+        fetch("/getAdd")
+            .then((e) => e.text())
+            .then((e) => {
+                initVideo(
+                    document.getElementById('video-1'),
+                    `http://${e}/streams/sosed/master.m3u8`
+                );
+
+                initVideo(
+                    document.getElementById('video-2'),
+                    `http://${e}/streams/stairs/master.m3u8`
+                );
+
+                initVideo(
+                    document.getElementById('video-3'),
+                    `http://${e}/streams/dog/master.m3u8`
+                );
+
+                initVideo(
+                    document.getElementById('video-4'),
+                    `http://${e}/streams/street/master.m3u8`
+                );
+            })
+            .catch((err) => console.log(err));
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
